@@ -1,202 +1,41 @@
-/* ===================== Light/Dark Theme Variables ===================== */
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #071A2B;
+  --color-primary-deep: #0B2236;
+  --color-primary-secondary: #102F46;
+  
+  --color-accent: #C9A227;
+  --color-accent-soft: #D8B84C;
+  
+  --color-neutral-offwhite: #F7F8FA;
+  --color-neutral-white: #FFFFFF;
+  --color-neutral-dark: #15202B;
+  --color-neutral-muted: #64748B;
+  --color-neutral-border: #E5E7EB;
+
+  --font-heading: var(--font-playfair);
+  --font-body: var(--font-inter);
+}
+
 :root {
-  --background: #f4f6f8;        /* page background */
-  --foreground: #ededed;        /* text color */
-  --navbar-bg: rgba(10, 25, 50, 0.85); /* dark blue glass navbar */
-  --navbar-gradient-start: #001f4d;    /* gradient start */
-  --navbar-gradient-end: #003366;      /* gradient end */
-  --primary-color: #00c6ff;     /* hover underline and highlight */
-  --font-sans: 'Geist', Arial, Helvetica, sans-serif;
-  --font-mono: 'Geist Mono', monospace;
+  --background: #F7F8FA;
+  --foreground: #15202B;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #071A2B;
+    --foreground: #F7F8FA;
   }
 }
 
-/* ===================== Base Body Styles ===================== */
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
-  margin: 0;
-  padding: 0;
-  scroll-behavior: smooth;
+  font-family: var(--font-body), sans-serif;
 }
 
-/* ===================== Premium Slim Glass Navbar ===================== */
-.premium-navbar {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 999;
-  background: var(--navbar-bg);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.4s ease;
-  padding: 0.5rem 0; /* compact height */
-  font-family: var(--font-sans);
-}
-
-/* Shadow + gradient background on scroll */
-.premium-navbar.scrolled {
-  background: linear-gradient(
-    90deg,
-    var(--navbar-gradient-start),
-    var(--navbar-gradient-end)
-  );
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  padding: 0.3rem 0; /* shrink more */
-  border-bottom: none;
-}
-
-/* ===================== Brand ===================== */
-.premium-navbar .brand {
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.2rem; /* compact */
-  letter-spacing: 0.5px;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.premium-navbar .brand:hover {
-  transform: scale(1.05);
-  color: var(--primary-color);
-}
-
-/* ===================== Nav Links ===================== */
-.premium-navbar .nav-link {
-  color: #fff;
-  font-weight: 500;
-  font-size: 0.9rem; /* smaller font */
-  margin-left: 1rem; /* tighter spacing */
-  position: relative;
-  transition: color 0.3s ease;
-  opacity: 0;
-  animation: fadeIn 0.6s forwards;
-}
-
-/* Underline hover effect */
-.premium-navbar .nav-link::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -3px;
-  left: 0;
-  background-color: var(--primary-color);
-  transition: width 0.3s ease;
-}
-
-.premium-navbar .nav-link:hover {
-  color: var(--primary-color);
-}
-
-.premium-navbar .nav-link:hover::after {
-  width: 100%;
-}
-
-/* Fade-in nav links animation delay */
-.premium-navbar .nav-link:nth-child(1) { animation-delay: 0.1s; }
-.premium-navbar .nav-link:nth-child(2) { animation-delay: 0.2s; }
-.premium-navbar .nav-link:nth-child(3) { animation-delay: 0.3s; }
-.premium-navbar .nav-link:nth-child(4) { animation-delay: 0.4s; }
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-/* ===================== Hamburger Animation ===================== */
-.navbar-toggler {
-  border: none;
-  outline: none;
-  transition: transform 0.3s ease;
-}
-
-.navbar-toggler:hover {
-  transform: rotate(90deg);
-}
-
-/* ===================== Responsive Adjustments ===================== */
-@media (max-width: 768px) {
-  .premium-navbar .nav-link {
-    margin-left: 0;
-    margin-bottom: 0.4rem;
-  }
-  .premium-navbar {
-    padding: 0.4rem 1rem;
-  }
-}
-@media (min-width: 768px) {
-  .hero-image-wrapper {
-    height: 420px;
-  }
-}
-
-/* Hero overlay */
-.overlay-dark {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-}
-
-/* Glass card */
-.glass-card {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
-  transition: all 0.45s ease;
-}
-
-/* Dark version */
-.glass-card.dark {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-/* Card body spacing */
-.glass-card .card-body {
-  padding: 2rem 1.75rem;
-}
-
-/* Typography */
-.glass-card .card-title {
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-}
-
-.glass-card .card-text {
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-/* Hover */
-.glass-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.3);
-}
-
-/* Fade-up animation */
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 0.8s ease forwards;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Investor background */
-.investor-bg {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), serif;
 }
