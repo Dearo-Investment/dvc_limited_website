@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DVCCL Website
 
-## Getting Started
+Development Venture Capital Corporation Limited (DVCCL) corporate website —
+built with Next.js 14 (App Router), TypeScript, Tailwind CSS, and Framer Motion.
 
-First, run the development server:
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/` — routes (App Router). Each folder under `app/` is a page:
+  `about`, `subsidiaries`, `investor-relations`, `community-environment`,
+  `careers`, `contact`, `leadership`, plus the homepage `page.tsx`.
+- `components/` — shared UI: `TopBar`, `Navbar`, `Footer`, `Hero`,
+  `StatsBar`, `AboutSection`, `Milestones`, `Awards`,
+  `SubsidiariesPreview`, `ContactSection`, `AnimatedSection` (scroll-reveal
+  wrapper), `PageHero` (interior page banner).
+- `lib/data.ts` — all site copy and content in one place. Edit this file to
+  update text, stats, subsidiaries, awards, milestones, contact info, etc.
+  without touching component code.
 
-## Learn More
+## Things to confirm / fill in before launch
 
-To learn more about Next.js, take a look at the following resources:
+- Confirm the real domain for email/website (currently `dvccl.lk` placeholder
+  in `lib/data.ts`).
+- Add real leadership photos and bios in `lib/data.ts` (`leadership` array)
+  and `app/leadership/page.tsx`.
+- Wire the contact form in `components/ContactSection.tsx` to a real backend
+  or email service (currently a client-side stub).
+- Replace the Google Maps embed query in `lib/data.ts` (`mapEmbedSrc`) with
+  the exact pinned location if needed.
+- Add `/login` and `/register` destinations (currently linked from the top
+  utility bar with no pages built).
+- Drop award/partner logo images into `public/` and swap the icon-based
+  `Awards` grid for real logos if available.
+- Add real open-role data/ATS link in `app/careers/page.tsx`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design system
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Colors, fonts, and spacing tokens live in `tailwind.config.ts`
+(`primary-deep`, `primary-darker`, `accent.gold`, `accent.violet`, etc.) and
+reusable utility classes (`.btn-primary`, `.card-surface`, `.eyebrow`, etc.)
+live in `app/globals.css`. Fonts are Fraunces (display/serif) + Inter (body)
++ IBM Plex Mono (labels/data), loaded via `next/font/google` in
+`app/layout.tsx`.

@@ -1,36 +1,64 @@
-import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
-import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import type { Metadata } from 'next';
+import { Fraunces, Inter, IBM_Plex_Mono } from 'next/font/google';
+import './globals.css';
+import TopBar from '@/components/TopBar';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
 });
 
 const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
+  subsets: ['latin'],
+  variable: '--font-inter',
+  weight: ['400', '500', '600', '700'],
+});
+
+const mono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  weight: ['400', '500'],
 });
 
 export const metadata: Metadata = {
-  title: "Development Venture Capital Corporation Limited | DVCCL",
-  description: "Development Venture Capital Corporation Limited — strategic investment, sustainable growth and long-term value creation.",
+  title: {
+    default: 'DVCCL | Development Venture Capital Corporation Limited',
+    template: '%s | DVCCL',
+  },
+  description:
+    'Building Wealth, Empowering Futures in Sri Lanka. DVCCL is a disciplined venture capital platform investing across agriculture, engineering, education, and technology.',
+  metadataBase: new URL('https://www.dvccl.lk'),
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
+  openGraph: {
+    title: 'DVCCL | Development Venture Capital Corporation Limited',
+    description: 'Building Wealth, Empowering Futures in Sri Lanka.',
+    siteName: 'DVCCL',
+    locale: 'en_LK',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-body bg-neutral-offwhite text-neutral-dark">
+    <html lang="en">
+      <body
+        className={`${fraunces.variable} ${inter.variable} ${mono.variable}`}
+      >
+        <TopBar />
         <Navbar />
-        <main className="flex-1 w-full">
-          {children}
-        </main>
+        <main className="w-full">{children}</main>
         <Footer />
       </body>
     </html>

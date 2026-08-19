@@ -1,32 +1,27 @@
-import { Hero } from "../components/home/Hero";
-import { TrustIntro } from "../components/home/TrustIntro";
-import { AboutSection } from "../components/home/AboutSection";
-import { InvestmentSectors } from "../components/home/InvestmentSectors";
-import { InvestmentApproach } from "../components/home/InvestmentApproach";
-import { PortfolioPreview } from "../components/home/PortfolioPreview";
-import { ImpactStats } from "../components/home/ImpactStats";
-import { WhyDVCCL } from "../components/home/WhyDVCCL";
-import { LeadershipPreview } from "../components/home/LeadershipPreview";
-import { InsightsPreview } from "../components/home/InsightsPreview";
-import { CareersCTA } from "../components/home/CareersCTA";
-import { ContactCTA } from "../components/home/ContactCTA";
+import Hero from '@/components/Hero';
+import StatsBar from '@/components/StatsBar';
+import AboutSection from '@/components/AboutSection';
+import Milestones from '@/components/Milestones';
+import Awards from '@/components/Awards';
+import SubsidiariesPreview from '@/components/SubsidiariesPreview';
+import NewsSection from '@/components/NewsSection';
+import LeadershipPreview from '@/components/LeadershipPreview';
+import CareersCTA from '@/components/CareersCTA';
+import ContactSection from '@/components/ContactSection';
 
-// Touch file to reload TS
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <>
       <Hero />
-      <TrustIntro />
+      <StatsBar />
       <AboutSection />
-      <InvestmentSectors />
-      <InvestmentApproach />
-      <PortfolioPreview />
-      <ImpactStats />
-      <WhyDVCCL />
+      <Milestones />
+      <Awards />
+      <SubsidiariesPreview />
+      <NewsSection />
       <LeadershipPreview />
-      <InsightsPreview />
       <CareersCTA />
-      <ContactCTA />
-    </div>
+      <ContactSection />
+    </>
   );
 }

@@ -1,41 +1,68 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  --color-primary: #071A2B;
-  --color-primary-deep: #0B2236;
-  --color-primary-secondary: #102F46;
-  
-  --color-accent: #C9A227;
-  --color-accent-soft: #D8B84C;
-  
-  --color-neutral-offwhite: #F7F8FA;
-  --color-neutral-white: #FFFFFF;
-  --color-neutral-dark: #15202B;
-  --color-neutral-muted: #64748B;
-  --color-neutral-border: #E5E7EB;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-  --font-heading: var(--font-playfair);
-  --font-body: var(--font-inter);
-}
+  body {
+    @apply bg-primary-deep text-neutral-white font-body antialiased;
+  }
 
-:root {
-  --background: #F7F8FA;
-  --foreground: #15202B;
-}
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #071A2B;
-    --foreground: #F7F8FA;
+  ::selection {
+    background: #C6A15B;
+    color: #1B0E33;
   }
 }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body), sans-serif;
+@layer components {
+  .eyebrow {
+    @apply text-xs tracking-[0.25em] uppercase text-accent-gold font-mono;
+  }
+
+  .section-rule {
+    @apply h-px w-16 bg-gold-line bg-accent-gold/60;
+  }
+
+  /* Global content width */
+  .container-content {
+    @apply mx-auto w-full max-w-8xl px-4 sm:px-6 lg:px-8 xl:px-10;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-full bg-accent-gold px-6 py-3 text-sm font-semibold text-primary-deep transition-colors hover:bg-accent-gold-light;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-neutral-white transition-colors hover:border-accent-gold hover:text-accent-gold;
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-white/10 bg-primary-light/60 backdrop-blur-sm;
+  }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading), serif;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #C6A15B;
+  outline-offset: 3px;
 }
