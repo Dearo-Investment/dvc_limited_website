@@ -24,19 +24,19 @@ export const navLinks = [
 
 export const heroSlides = [
   {
-    kicker: "Fueling Tomorrow's Venture Capital",
-    title: "Fueling Tomorrow's Innovators",
-    body: 'We invest in visionary founders shaping the future of technology and business.',
-  },
-  {
-    kicker: 'Empowering Startups Global Reach',
-    title: 'Empowering Startups Globally',
-    body: 'Strategic guidance, funding, and a global network to accelerate growth.',
-  },
-  {
-    kicker: 'Shaping the Future Industry Leaders',
+    kicker: 'SHAPING SRI LANKA · GLOBAL VISION',
     title: 'Shaping the Future of Industries',
-    body: 'Driving innovation across technology, agriculture, and financial solutions.',
+    body: 'Driving innovation across technology, agriculture, engineering, education, and financial solutions.',
+  },
+  {
+    kicker: 'INVESTMENT · INNOVATION · IMPACT',
+    title: 'Building Wealth. Empowering Futures.',
+    body: 'Creating sustainable opportunities for businesses, communities, and investors across Sri Lanka.',
+  },
+  {
+    kicker: 'DIVERSE VENTURES · ONE VISION',
+    title: 'Investing in What Comes Next',
+    body: 'A disciplined venture platform connecting capital, innovation, and opportunity across high-growth sectors.',
   },
 ];
 
